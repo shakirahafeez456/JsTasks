@@ -93,7 +93,6 @@ function addnew() {
   }
 
   id++;
-  $("#form").hide();
 }
 
 function onDelete(e) {
