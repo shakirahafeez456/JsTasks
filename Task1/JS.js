@@ -1,3 +1,5 @@
+const { restart } = require("nodemon");
+
 $(function () {
   $("#addNew").click(addnew);
   $("#reset").click(Reset);
