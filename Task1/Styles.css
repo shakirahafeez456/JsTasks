@@ -1,0 +1,34 @@
+table, tr,th,td {
+    border-collapse: collapse;
+    padding: 10px;
+    margin: 10px;    
+}
+table{
+    border: 2px solid black;
+    table-layout: str;
+}
+#form{
+    border: 2px solid grey;
+    padding: 5px;
+    width: fit-content;
+    border-collapse: collapse;
+
+}
+#form div{
+    padding: 5px;
+}
+.error{
+    border: 1px solid red;
+    background-color:1px solid red;
+}
+td input{
+    background-color: #373b3e;
+    color: white;
+}
+td select{
+    background-color: #373b3e;
+    color: white;
+}
+#reset{
+    margin: 5px;
+}

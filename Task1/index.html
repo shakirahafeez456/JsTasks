@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script src="./popper.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./JS.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./Styles.css" />
+  </head>
+  <body class="container-fluid">
+    <div>
+    <table id="list"  class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>City</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr id="1">
+          <td class="id">1</td>
+          <td class="name"><input type="text" value="Sehr" readonly></td>
+          <td class="gender"> <input type="text" value= "female" readonly></td>
+          <td class="age"> <input type="number" value= "21" readonly></td>
+          <td class="city">
+            <select name="citynames" disabled class="cityNames">
+              <option class="selected" value="Karachi">Karachi</option>
+              <option value="Lahore" >Lahore</option>
+              <option value="Islamabad" >Islamabad</option>
+            </select>
+          </td>
+          <!-- <input type="text" readonly value="Karachi"> -->
+          <td>
+             <button class="btn btn-warning float right" onclick="onEdit(1)">
+              Edit
+            </button>
+            <button class="btn btn-info float right" onclick="onSave(1)">
+              Save
+            </button>
+            <button class="btn btn-danger float right" onclick="onDelete(event)">
+              Remove
+            </button>
+          </td>
+        </tr> 
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-info"  onclick="View()">Create New Record</button>
+    
+
+    <div id="form" class="container" style="display: none;">
+      <div style="display: none;" id="show">ID: <input  type="number" id="id" readonly/>
+      </div>
+           
+      <div >Name: <input  type="text" id="name"/>
+      </div>
+      
+      <div id="gen">
+        <label for="gender" >Gender: </label>
+        <input type="radio" name="gender" value="male" class="gender" />male
+        <input type="radio" name="gender" value="female" class="gender" />female
+        <input type="radio" name="gender" value="other" class="gender" />other
+      </div>
+
+      <div>
+        <label for="age" >Age: </label>
+        <input type="number" id="age" min="10" max="100" />
+      </div>
+
+      <form>
+        <label >City:</label>
+        <select name="city-names" id="city-names" class="city">
+          <option value="Lahore">Lahore</option>
+          <option value="Karachi">Karachi</option>
+          <option value="Islamabad">Islamabad</option>
+        </select>
+      </form>
+
+      <button id="reset" type="button" class="btn btn-dark">Reset</button>
+      <button id="addNew" type="button" class="btn btn-success">Create</button>
+    </div>
+
+    </div>
+  </body>
+</html>
