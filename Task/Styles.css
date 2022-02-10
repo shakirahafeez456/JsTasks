@@ -9,9 +9,9 @@ table{
 }
 #form{
     /* border: 2px solid grey; */
-    padding: 5px;
+    /* padding: 5px; */
     width: fit-content;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
 
 }
 #form div{

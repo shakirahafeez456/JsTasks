@@ -15,8 +15,12 @@ function addnew() {
 
   if (!name || !age || !city || !radioValue) {
     $("#name, #age, #city-names, #gen, #id ").addClass("error");
+    $("#addNew").removeAttr("data-dismiss","modal");
     return;
+  }else{
+    $("#addNew").attr("data-dismiss","modal");
   }
+
   Reset();
 
   $("#list").append(
