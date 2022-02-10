@@ -1,8 +1,9 @@
-const { restart } = require("nodemon");
-
 $(function () {
   $("#addNew").click(addnew);
   $("#reset").click(Reset);
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
 });
 var id = 2;
 
@@ -118,12 +119,6 @@ function onSave(Id) {
   var gender = id.children(".gender").children("input").val();
   var age = id.children(".age").children("input").val();
   var city = id.children(".city").children("select, option, .selected").val();
-  // id.children(".city").children(".cityNames").children("option").prop("value",city).addClass(".selected");
-
-//   $("#"+Id+'.city, select, option').each(function(){
-//       console.log("xyz");
-//   })
-// console.log(city);
 
   if (checkVal(Id)) {
     var colName = id
@@ -141,7 +136,6 @@ function onSave(Id) {
       .children("input")
       .prop("readonly", true)
       .attr("value", age);
-    // id.children(".city").children("select, option").prop("selected").attr('value',"hello");
     var colCity = id
       .children(".city")
       .children("select")
@@ -158,7 +152,6 @@ function checkVal(id) {
   var colName = ID.children(".name").children("input").prop("value");
   var colGender = ID.children(".gender").children("input").prop("value");
   var colAge = ID.children(".age").children("input").prop("value");
-  //var colCity = ID.children(".city").children("select, option").prop("selected, value");
   var a,
     b,
     c = false;
@@ -193,16 +186,6 @@ function checkVal(id) {
     }
   }
 
-  //   //city
-  //   {
-  //     if (colCity == 'Karachi' || colCity == 'Lahore' || colCity == 'Islamabad') {
-  //         ID.children(".city").children("input").removeClass("error");
-  //         d = true;
-  //       } else {
-  //         ID.children(".city").children("input").addClass("error");
-  //       }
-  //   }
-
   if (a == true && b == true && c == true) {
     console.log("success");
     return true;
@@ -212,9 +195,6 @@ function checkVal(id) {
   }
 }
 
-function View() {
-  $("#form").show();
-}
 
 function Reset() {
   $("#name, #age, #city-names, #gen, #id").removeClass("error");
