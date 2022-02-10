@@ -32,3 +32,6 @@ td select{
 #reset{
     margin: 5px;
 }
+.btn-primary{
+    float: right;
+}

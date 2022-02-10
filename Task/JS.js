@@ -17,6 +17,10 @@ function addnew() {
     $("#name, #age, #city-names, #gen, #id ").addClass("error");
     $("#addNew").removeAttr("data-dismiss","modal");
     return;
+  }else if(!name.match("^[a-zA-Z]{2,16}$")){
+    $("#name").addClass("error");
+    $("#addNew").removeAttr("data-dismiss","modal");
+    return;
   }else{
     $("#addNew").attr("data-dismiss","modal");
   }
@@ -197,7 +201,6 @@ function checkVal(id) {
     return false;
   }
 }
-
 
 function Reset() {
   $("#name, #age, #city-names, #gen, #id").removeClass("error");
