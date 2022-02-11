@@ -58,7 +58,7 @@ function addnew() {
       ") >" +
       " Edit " +
       "</button>" +
-      "<button class='btn btn-info float right' onclick= onSave(" +
+      "<button class= 'btn btn-info float-right' onclick= onSave(" +
       id +
       ") >" +
       " Save " +
