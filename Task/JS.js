@@ -70,6 +70,9 @@ function addnew() {
       "</tr>"
   );
 
+  $(".alert-info").show();
+  $(".alert-info").delay(1500).fadeOut();
+
   if (city == "Karachi") {
     $("#" + id)
       .children(".city")
@@ -147,12 +150,15 @@ function onSave(Id) {
       .children(".city")
       .children("select")
       .prop("disabled", true);
-    let a = id
+    id
       .children(".city")
       .children("select, option, .selected")
       .val(city);
+      $(".alert-primary").show();
+      $(".alert-primary").delay(1500).fadeOut();
   }
 }
+
 
 function checkVal(id) {
   var ID = $("#" + id);

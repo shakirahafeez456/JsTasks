@@ -1,20 +1,10 @@
 table, tr,th,td {
     border-collapse: collapse;
     padding: 10px;
-    margin: 10px;    
 }
 table{
     border: 2px solid black;
     table-layout: str;
-}
-#form{
-    /* border: 2px solid grey; */
-    /* padding: 5px; */
-    width: 100%;
-    border-collapse: collapse;
-}
-#form div{
-    padding: 5px;
 }
 .error{
     border: 1px solid red;
@@ -26,15 +16,45 @@ td input{
 }
 td select{
     background-color: #373b3e;
-    color: white;
+    color: #ffffff;
+    height: 27px;
+    width: 200px;
 }
 #reset{
     margin: 5px;
 }
 .btn-primary{
     float: right;
+    margin: 5px;
 }
 .btn-info{
     margin-left: 5px;
     margin-right: 5px;
+}
+#name{
+    float: right;
+    width: 55%;
+}
+#age{
+    float: right;
+    width: 55%;
+}
+#city-names{
+    float: right;
+    width: 55%;
+    display: inline;
+}
+label, #city-names {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+#radio{
+    float: right;
+}
+label{
+    margin-right: 50px;
+}
+#form{
+    border: 2px solid grey;
 }
