@@ -60,3 +60,10 @@ label, #city-names {
 .btn-success{
     margin-right: 15px;
 }
+/* @media screen and (max-width:500px){
+    body{
+    background-color: blue;
+}} */
+*{
+    box-sizing: border-box;
+  }

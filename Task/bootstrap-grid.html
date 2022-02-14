@@ -1,17 +1,25 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./JS.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Styles.css" />
   </head>
   <body>
-    <div class="container-fluid col-12 ">
-
+  
+      <div class="container-fluid">
+  
         <div class="alert alert-primary" role="alert" style="display: none;">
           Record Saved!
         </div>
@@ -23,7 +31,7 @@
         <!-- Button trigger modal -->
               <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-primary column"
               data-toggle="modal"
               data-target="#exampleModal"
             >
@@ -84,10 +92,10 @@
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+          <div class="modal-dialog modal-dialog-centered modal-md" role="document" style="width: 350px">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold; font-weight: 900px;">Create New Record</h5>
+                <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold; font-weight: 1000px; font-size: large;">Create New Record</h5>
                 <!-- <button
                   type="button"
                   class="close"
@@ -104,7 +112,7 @@
                   <div style="display: none;" id="show">ID: <input  type="number" id="id" readonly/>
                   </div>
                        
-                  <div ><label for="name" >Name: </label> <input  type="text" id="name"/>
+                  <div ><label for="name" >Name: </label> <input  type="text" id="name" placeholder="Enter Name"/>
                   </div>
                   
                   <div id="gen">
@@ -118,7 +126,7 @@
                 
                   <div>
                     <label for="age" >Age: </label>
-                    <input type="number" id="age" min="10" max="100" />
+                    <input type="number" id="age" min="10" max="100" placeholder="Enter Age"/>
                   </div>
                 
                   <form>
@@ -148,6 +156,7 @@
         </div>
   
       </div>
+    
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

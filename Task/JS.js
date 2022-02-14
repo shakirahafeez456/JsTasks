@@ -13,15 +13,12 @@ function addnew() {
   var age = $("#age").val();
   var city = $("#city-names").val();
 
-  if (!name || !age || !city || !radioValue) {
-    $("#name, #age, #city-names, #gen, #id ").addClass("error");
+
+  if (!check(id, name, radioValue, age)) {
     $("#addNew").removeAttr("data-dismiss","modal");
     return;
-  }else if(!name.match("^[a-zA-Z]{2,16}$")){
-    $("#name").addClass("error");
-    $("#addNew").removeAttr("data-dismiss","modal");
-    return;
-  }else{
+  }
+  else{
     $("#addNew").attr("data-dismiss","modal");
   }
 
@@ -129,7 +126,7 @@ function onSave(Id) {
   var gender = id.children(".gender").children("input").val();
   var age = id.children(".age").children("input").val();
   var city = id.children(".city").children("select, option, .selected").val();
-
+ 
   if (checkVal(Id)) {
     var colName = id
       .children(".name")
@@ -159,7 +156,6 @@ function onSave(Id) {
   }
 }
 
-
 function checkVal(id) {
   var ID = $("#" + id);
   var colName = ID.children(".name").children("input").prop("value");
@@ -171,7 +167,12 @@ function checkVal(id) {
 
   //name
   {
-    if (colName.match("^[a-zA-Z]{2,16}$")) {
+    // var xy = ("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$ ");
+    // var xy = /^[a-z ,.'-]+$/i ;
+    // var yz = ("^[a-zA-Z]{2,16}$");
+    // var yz = /^[a-zA-Z].*[\s\.]*$/g;
+
+      if (colName.match("^[a-zA-Z]{2,16}$")) {
       ID.children(".name").children("input").removeClass("error");
       a = true;
     } else {
@@ -200,6 +201,57 @@ function checkVal(id) {
   }
 
   if (a == true && b == true && c == true) {
+    console.log("success");
+    return true;
+  } else {
+    console.log("fail");
+    return false;
+  }
+}
+
+function check(id, name, gender, age) {
+  var ID = $("#" + id);
+  var a,
+    b,
+    c = false;
+
+  //name
+  {
+    if (name.match("^[a-zA-Z]{2,16}$")) {
+      $("#name").removeClass("error");
+      a = true;
+    } else {
+      $("#name").addClass("error");
+    }
+  }
+
+
+  //age
+  {
+    if (age > 0 && age < 100) {
+      $("#age").removeClass("error");
+      b = true;
+    } else {
+      $("#age").addClass("error");
+    }
+
+  }
+
+  //gender
+  {
+    if (gender == "female" || gender == "male" || gender == "other") {
+      $("#gen").children("#radio").removeClass("error");
+      c = true;
+    } else {
+      $("#gen").children("#radio").addClass("error");
+    }
+  }
+
+  if (
+    a == true &&
+    b == true &&
+    c == true
+  ) {
     console.log("success");
     return true;
   } else {
