@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./Styles.css" />
   </head>
-  <body>
+  <body class="container-fluid">
   
-      <div class="container-fluid">
+      <div>
   
         <div class="alert alert-primary" role="alert" style="display: none;">
           Record Saved!
@@ -31,33 +31,33 @@
         <!-- Button trigger modal -->
               <button
               type="button"
-              class="btn btn-primary column"
+              class="btn btn-primary col col-xs-2 col-sm-2 col-md-2 col-lg-2"
               data-toggle="modal"
               data-target="#exampleModal"
-            >
+              >
               Create New Record
             </button>
   
-        <table id="list" class="table table-striped table-dark">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Gender</th>
-              <th>Age</th>
-              <th>City</th>
-              <th>Action</th>
+        <table id="list" class="table table-striped table-dark ">
+          <thead >
+            <tr >
+              <th class="col col-xs-1 col-sm-1 col-md-1 col-lg-1">Id</th>
+              <th class="col col-xs-1 col-sm-1 col-md-2 col-lg-2">Name</th>
+              <th class="col col-xs-1 col-sm-1 col-md-2 col-lg-2">Gender</th>
+              <th class="col col-xs-1 col-sm-1 col-md-2 col-lg-2">Age</th>
+              <th class="col col-xs-1 col-sm-1 col-md-2 col-lg-2">City</th>
+              <th class="col col-xs-7 col-sm-7 col-md-3 col-lg-3">Action</th>
             </tr>
           </thead>
   
-          <tbody>
-            <tr id="1">
-              <td class="id">1</td>
-              <td class="name"><input type="text" value="Sehr" readonly /></td>
+          <tbody >
+            <tr id="1" >
+              <td class="id ">1</td>
+              <td class="name "><input type="text" value="Sehr" readonly /></td>
               <td class="gender">
                 <input type="text" value="female" readonly />
               </td>
-              <td class="age"><input type="number" value="21" readonly /></td>
+              <td class="age "><input type="number" value="21" readonly /></td>
               <td class="city">
                 <select name="citynames" disabled class="cityNames">
                   <option class="selected" value="Karachi">Karachi</option>
@@ -65,11 +65,11 @@
                   <option value="Islamabad">Islamabad</option>
                 </select>
               </td>
-              <td>
+              <td >
                 <button class="btn btn-warning float right" onclick="onEdit(1)">
                   Edit
                 </button>
-                <button class="btn btn-info float right" onclick="onSave(1)">
+                <button class="btn btn-info float right " onclick="onSave(1)">
                   Save
                 </button>
                 <button

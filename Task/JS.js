@@ -13,7 +13,6 @@ function addnew() {
   var age = $("#age").val();
   var city = $("#city-names").val();
 
-
   if (!check(id, name, radioValue, age)) {
     $("#addNew").removeAttr("data-dismiss","modal");
     return;
@@ -31,9 +30,12 @@ function addnew() {
       "<td class='id' >" +
       id +
       "</td>" +
-      "<td class='name'> <input type='text' value=" +
-      name +
-      " readonly> </td>" +
+      "<td class='name'>"
+      //<input type='text' value=" 
+      +
+      name + 
+      //" readonly> 
+      "</td>" +
       "<td class='gender' ><input type='text' value=" +
       radioValue +
       " readonly></td>" +
@@ -66,7 +68,6 @@ function addnew() {
       "</td>" +
       "</tr>"
   );
-
   $(".alert-info").show();
   $(".alert-info").delay(1500).fadeOut();
 
@@ -99,6 +100,7 @@ function addnew() {
   id++;
 }
 
+
 function onDelete(e) {
   var tag = e.target;
   console.log(e);
@@ -110,7 +112,14 @@ function onDelete(e) {
 function onEdit(iD) {
   var id = $("#" + iD);
 
-  var colName = id.children(".name").children("input").prop("readonly", false);
+  // var colName = id.children(".name").children("input").prop("readonly", false);
+  var colName = id.children(".name").html();
+  id.children(".name").html("");
+  id.children(".name").append("<input type='text' value='' style='white-space: pre'>");
+  var name = id.children(".name").children("input").val(colName);
+
+
+
   var colGender = id
     .children(".gender")
     .children("input")
@@ -127,6 +136,7 @@ function onSave(Id) {
   var age = id.children(".age").children("input").val();
   var city = id.children(".city").children("select, option, .selected").val();
  
+  
   if (checkVal(Id)) {
     var colName = id
       .children(".name")
@@ -168,11 +178,11 @@ function checkVal(id) {
   //name
   {
     // var xy = ("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$ ");
-    // var xy = /^[a-z ,.'-]+$/i ;
+    // var xy = "/^[a-z ,.'-]+$/i" ;
     // var yz = ("^[a-zA-Z]{2,16}$");
-    // var yz = /^[a-zA-Z].*[\s\.]*$/g;
+    var yz = "/^[a-zA-Z]$/";
 
-      if (colName.match("^[a-zA-Z]{2,16}$")) {
+      if (colName.match("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$")) {
       ID.children(".name").children("input").removeClass("error");
       a = true;
     } else {
@@ -214,10 +224,10 @@ function check(id, name, gender, age) {
   var a,
     b,
     c = false;
-
   //name
   {
-    if (name.match("^[a-zA-Z]{2,16}$")) {
+    if (name.match("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$")) {
+
       $("#name").removeClass("error");
       a = true;
     } else {

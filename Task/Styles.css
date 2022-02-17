@@ -1,10 +1,17 @@
-table, tr,th,td {
+.table, tr,th,td {
     border-collapse: collapse;
     padding: 10px;
+    text-align: center;
 }
-table{
-    border: 2px solid black;
+
+.table{
+    border: 2px solid blue;
     table-layout: str;
+    /* width: 100%; */
+    
+}
+th,td{
+    border: 2px solid yellow;
 }
 .error{
     border: 1px solid red;
@@ -26,44 +33,44 @@ td select{
 }
 .btn-primary{
     float: right;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .btn-info{
     margin-left: 5px;
     margin-right: 5px;
 }
-#name{
+ /* #name{
     float: right;
-    width: 55%;
-}
-#age{
+} */
+/* #age{
     float: right;
-    width: 55%;
-}
-#city-names{
+} */
+/* #city-names{
     float: right;
-    width: 55%;
     display: inline;
 }
 label, #city-names {
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
-}
-#radio{
-    float: right;
-    margin-right: 5px;
-}
-/* label{
-    margin-right: 10px;
 } */
+/* #radio{
+    float: right;
+    padding-right: 5px;
+} */
+/* #form label{
+    border: 1px solid red;
+}
+#name, #radio, #age, #city-names{
+    border: 1px solid red;
+} */
+#city-names{
+    height: 24px;
+}
 .btn-success{
     margin-right: 15px;
 }
-/* @media screen and (max-width:500px){
-    body{
-    background-color: blue;
-}} */
-*{
+/* *{
     box-sizing: border-box;
-  }
+ } */
