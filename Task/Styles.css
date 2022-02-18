@@ -7,8 +7,6 @@
 .table{
     border: 2px solid blue;
     table-layout: str;
-    /* width: 100%; */
-    
 }
 th,td{
     border: 2px solid yellow;
@@ -40,37 +38,9 @@ td select{
     margin-left: 5px;
     margin-right: 5px;
 }
- /* #name{
-    float: right;
-} */
-/* #age{
-    float: right;
-} */
-/* #city-names{
-    float: right;
-    display: inline;
-}
-label, #city-names {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
-} */
-/* #radio{
-    float: right;
-    padding-right: 5px;
-} */
-/* #form label{
-    border: 1px solid red;
-}
-#name, #radio, #age, #city-names{
-    border: 1px solid red;
-} */
 #city-names{
     height: 24px;
 }
 .btn-success{
     margin-right: 15px;
 }
-/* *{
-    box-sizing: border-box;
- } */

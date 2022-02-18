@@ -1,9 +1,28 @@
+$(window).on("resize", function () {
+  var win = $(this);
+  if (win.width() < 920) {
+    $(".btn-warning").addClass("glyphicon glyphicon-edit");
+    $(".btn-warning").html("");
+    $(".btn-danger").addClass("glyphicon glyphicon-remove");
+    $(".btn-danger").html("");
+    $(".btn-info").addClass("glyphicon glyphicon-ok");
+    $(".btn-info").html("");
+  } else {
+    $(".btn-warning").removeClass("glyphicon glyphicon-edit");
+    $(".btn-warning").html("Edit");
+    $(".btn-danger").removeClass("glyphicon glyphicon-remove");
+    $(".btn-danger").html("Remove");
+    $(".btn-info").removeClass("glyphicon glyphicon-ok");
+    $(".btn-info").html("Save");
+  }
+});
+
 $(function () {
   $("#addNew").click(addnew);
   $("#reset").click(Reset);
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
+  $("#myModal").on("shown.bs.modal", function () {
+    $("#myInput").trigger("focus");
+  });
 });
 var id = 2;
 
@@ -14,11 +33,10 @@ function addnew() {
   var city = $("#city-names").val();
 
   if (!check(id, name, radioValue, age)) {
-    $("#addNew").removeAttr("data-dismiss","modal");
+    $("#addNew").removeAttr("data-dismiss", "modal");
     return;
-  }
-  else{
-    $("#addNew").attr("data-dismiss","modal");
+  } else {
+    $("#addNew").attr("data-dismiss", "modal");
   }
 
   Reset();
@@ -30,20 +48,16 @@ function addnew() {
       "<td class='id' >" +
       id +
       "</td>" +
-      "<td class='name'>"
-      +
-      name + 
+      "<td class='name'>" +
+      name +
       "</td>" +
-      "<td class='gender' >"
-      +
+      "<td class='gender' >" +
       radioValue +
-      "<td class='age' >"
-      +
+      "<td class='age' >" +
       age +
       "</td>" +
       "<td class='city'>" +
-      +
-      city +
+      +city +
       "</td>" +
       "<td>" +
       "<button class='btn btn-warning float right'  onclick= onEdit(" +
@@ -81,19 +95,18 @@ function addnew() {
         "<option value='Karachi'>Karachi</option>" +
           "<option value='Islamabad'>Islamabad</option>"
       );
-  } else if(city == "Islamabad"){
+  } else if (city == "Islamabad") {
     $("#" + id)
-    .children(".city")
-    .children("select, option")
-    .append(
-      "<option value='Karachi'>Karachi</option>" +
-        "<option value='Lahore'>Lahore</option>"
-    );
+      .children(".city")
+      .children("select, option")
+      .append(
+        "<option value='Karachi'>Karachi</option>" +
+          "<option value='Lahore'>Lahore</option>"
+      );
   }
 
   id++;
 }
-
 
 function onDelete(e) {
   var tag = e.target;
@@ -104,36 +117,40 @@ function onDelete(e) {
 }
 
 function onEdit(iD) {
-  $(".btn-warning").prop( "disabled", true );
+  $(".btn-warning").prop("disabled", true);
   var id = $("#" + iD);
 
   var colName = id.children(".name").html();
   id.children(".name").html("");
-  id.children(".name").append("<input type='text' style='white-space: pre'>");
-  id.children(".name").children("input").prop("value",colName);
-  
+  id.children(".name").append("<input type='text'  style='white-space: pre'>");
+  id.children(".name").children("input").prop("value", colName);
 
   var colGender = id.children(".gender").html();
   id.children(".gender").html("");
   id.children(".gender").append(
-  "<input type='radio' name='gender' value='male' class='gender' >"+'male'+
-  "<input type='radio' name='gender' value='female' class='gender' >"+'female'+
-  "<input type='radio' name='gender' value='other' class='gender' >"+'other');
-  id.children(".gender").children("input[name=gender][value="+colGender+"]").prop('checked', true);
-
+    "<input type='radio' name='gender' value='male' class='gender mx-1' >" +
+      "male" +
+      "<input type='radio' name='gender' value='female' class='gender mx-1' >" +
+      "female" +
+      "<input type='radio' name='gender' value='other' class='gender mx-1' >" +
+      "other"
+  );
+  id.children(".gender")
+    .children("input[name=gender][value=" + colGender + "]")
+    .prop("checked", true);
 
   var colAge = id.children(".age").html();
   id.children(".age").html("");
   id.children(".age").append("<input type='number' value='21'>");
 
-
   var colCity = id.children(".city").html();
   id.children(".city").html("");
-  id.children(".city").append("<select name='citynames' class='cityNames'>"+
-  "<option value='Karachi'>Karachi</option>"+
-  "<option value='Lahore'>Lahore</option>"+
-  "<option value='Islamabad'>Islamabad</option></select>");
-
+  id.children(".city").append(
+    "<select name='citynames' class='cityNames'>" +
+      "<option value='Karachi'>Karachi</option>" +
+      "<option value='Lahore'>Lahore</option>" +
+      "<option value='Islamabad'>Islamabad</option></select>"
+  );
 }
 
 function onSave(Id) {
@@ -144,21 +161,20 @@ function onSave(Id) {
   var city = id.children(".city").children("select, option, .selected").val();
 
   if (checkVal(Id)) {
-
     id.children(".name").html("");
     var colName = id.children(".name").append(name);
 
     id.children(".gender").html("");
     var colGender = id.children(".gender").append(gender);
-    
+
     id.children(".age").html("");
     var colAge = id.children(".age").append(age);
 
     id.children(".city").html("");
     id.children(".city").append(city);
 
-      $(".alert-primary").show();
-      $(".alert-primary").delay(1500).fadeOut();
+    $(".alert-primary").show();
+    $(".alert-primary").delay(1500).fadeOut();
   }
 }
 
@@ -175,7 +191,9 @@ function checkVal(id) {
   {
     var yz = "/^[a-zA-Z]$/";
 
-      if (colName.match("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$")) {
+    if (
+      colName.match("^[a-zA-Z'-pL]+(?:(?! {2})[a-zA-Z'-pL ])*[a-zA-Z'-pL]+$")
+    ) {
       ID.children(".name").children("input").removeClass("error");
       a = true;
     } else {
@@ -205,7 +223,7 @@ function checkVal(id) {
 
   if (a == true && b == true && c == true) {
     console.log("success");
-    $(".btn-warning").prop( "disabled", false );
+    $(".btn-warning").prop("disabled", false);
     return true;
   } else {
     console.log("fail");
@@ -220,15 +238,13 @@ function check(id, name, gender, age) {
     c = false;
   //name
   {
-    if (name.match("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$")) {
-
+    if (name.match("^[a-zA-Z'-pL]+(?:(?! {2})[a-zA-Z'-pL ])*[a-zA-Z'-pL]+$")) {
       $("#name").removeClass("error");
       a = true;
     } else {
       $("#name").addClass("error");
     }
   }
-
 
   //age
   {
@@ -238,7 +254,6 @@ function check(id, name, gender, age) {
     } else {
       $("#age").addClass("error");
     }
-
   }
 
   //gender
@@ -251,11 +266,7 @@ function check(id, name, gender, age) {
     }
   }
 
-  if (
-    a == true &&
-    b == true &&
-    c == true
-  ) {
+  if (a == true && b == true && c == true) {
     console.log("success");
     return true;
   } else {
