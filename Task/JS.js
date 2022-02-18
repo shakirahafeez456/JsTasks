@@ -31,25 +31,19 @@ function addnew() {
       id +
       "</td>" +
       "<td class='name'>"
-      //<input type='text' value=" 
       +
       name + 
-      //" readonly> 
       "</td>" +
-      "<td class='gender' ><input type='text' value=" +
+      "<td class='gender' >"
+      +
       radioValue +
-      " readonly></td>" +
-      "<td class='age' ><input type='number' value=" +
+      "<td class='age' >"
+      +
       age +
-      " readonly></td>" +
+      "</td>" +
       "<td class='city'>" +
-      "<select name='citynames' class='cityNames' disabled>" +
-      "<option class='selected' value=" +
+      +
       city +
-      ">" +
-      city +
-      "</option>" +
-      "</select>" +
       "</td>" +
       "<td>" +
       "<button class='btn btn-warning float right'  onclick= onEdit(" +
@@ -110,57 +104,59 @@ function onDelete(e) {
 }
 
 function onEdit(iD) {
+  $(".btn-warning").prop( "disabled", true );
   var id = $("#" + iD);
 
-  // var colName = id.children(".name").children("input").prop("readonly", false);
   var colName = id.children(".name").html();
   id.children(".name").html("");
-  id.children(".name").append("<input type='text' value='' style='white-space: pre'>");
-  var name = id.children(".name").children("input").val(colName);
+  id.children(".name").append("<input type='text' style='white-space: pre'>");
+  id.children(".name").children("input").prop("value",colName);
+  
+
+  var colGender = id.children(".gender").html();
+  id.children(".gender").html("");
+  id.children(".gender").append(
+  "<input type='radio' name='gender' value='male' class='gender' >"+'male'+
+  "<input type='radio' name='gender' value='female' class='gender' >"+'female'+
+  "<input type='radio' name='gender' value='other' class='gender' >"+'other');
+  id.children(".gender").children("input[name=gender][value="+colGender+"]").prop('checked', true);
 
 
+  var colAge = id.children(".age").html();
+  id.children(".age").html("");
+  id.children(".age").append("<input type='number' value='21'>");
 
-  var colGender = id
-    .children(".gender")
-    .children("input")
-    .prop("readonly", false);
-  var colAge = id.children(".age").children("input").prop("readonly", false);
-  var colCity = id.children(".city").children("select").prop("disabled", false);
+
+  var colCity = id.children(".city").html();
+  id.children(".city").html("");
+  id.children(".city").append("<select name='citynames' class='cityNames'>"+
+  "<option value='Karachi'>Karachi</option>"+
+  "<option value='Lahore'>Lahore</option>"+
+  "<option value='Islamabad'>Islamabad</option></select>");
 
 }
 
 function onSave(Id) {
   var id = $("#" + Id); //whole tr object
   var name = id.children(".name").children("input").val();
-  var gender = id.children(".gender").children("input").val();
+  var gender = $("input[name='gender']:checked").val();
   var age = id.children(".age").children("input").val();
   var city = id.children(".city").children("select, option, .selected").val();
- 
-  
+
   if (checkVal(Id)) {
-    var colName = id
-      .children(".name")
-      .children("input")
-      .prop("readonly", true)
-      .attr("value", name);
-    var colGender = id
-      .children(".gender")
-      .children("input")
-      .prop("readonly", true)
-      .attr("value", gender);
-    var colAge = id
-      .children(".age")
-      .children("input")
-      .prop("readonly", true)
-      .attr("value", age);
-    var colCity = id
-      .children(".city")
-      .children("select")
-      .prop("disabled", true);
-    id
-      .children(".city")
-      .children("select, option, .selected")
-      .val(city);
+
+    id.children(".name").html("");
+    var colName = id.children(".name").append(name);
+
+    id.children(".gender").html("");
+    var colGender = id.children(".gender").append(gender);
+    
+    id.children(".age").html("");
+    var colAge = id.children(".age").append(age);
+
+    id.children(".city").html("");
+    id.children(".city").append(city);
+
       $(".alert-primary").show();
       $(".alert-primary").delay(1500).fadeOut();
   }
@@ -177,9 +173,6 @@ function checkVal(id) {
 
   //name
   {
-    // var xy = ("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$ ");
-    // var xy = "/^[a-z ,.'-]+$/i" ;
-    // var yz = ("^[a-zA-Z]{2,16}$");
     var yz = "/^[a-zA-Z]$/";
 
       if (colName.match("^[a-zA-Z'\-\pL]+(?:(?! {2})[a-zA-Z'\-\pL ])*[a-zA-Z'\-\pL]+$")) {
@@ -212,6 +205,7 @@ function checkVal(id) {
 
   if (a == true && b == true && c == true) {
     console.log("success");
+    $(".btn-warning").prop( "disabled", false );
     return true;
   } else {
     console.log("fail");
