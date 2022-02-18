@@ -1,21 +1,21 @@
-$(window).on("resize", function () {
-  var win = $(this);
-  if (win.width() < 920) {
-    $(".btn-warning").addClass("glyphicon glyphicon-edit");
-    $(".btn-warning").html("");
-    $(".btn-danger").addClass("glyphicon glyphicon-remove");
-    $(".btn-danger").html("");
-    $(".btn-info").addClass("glyphicon glyphicon-ok");
-    $(".btn-info").html("");
-  } else {
-    $(".btn-warning").removeClass("glyphicon glyphicon-edit");
-    $(".btn-warning").html("Edit");
-    $(".btn-danger").removeClass("glyphicon glyphicon-remove");
-    $(".btn-danger").html("Remove");
-    $(".btn-info").removeClass("glyphicon glyphicon-ok");
-    $(".btn-info").html("Save");
-  }
-});
+// $(window).on("resize", function () {
+//   var win = $(this);
+//   if (win.width() < 600) {
+//     $(".btn-warning").addClass("glyphicon glyphicon-edit");
+//     $(".btn-warning").html("");
+//     $(".btn-danger").addClass("glyphicon glyphicon-remove");
+//     $(".btn-danger").html("");
+//     $(".btn-info").addClass("glyphicon glyphicon-ok");
+//     $(".btn-info").html("");
+//   } else {
+//     $(".btn-warning").removeClass("glyphicon glyphicon-edit");
+//     $(".btn-warning").html("Edit");
+//     $(".btn-danger").removeClass("glyphicon glyphicon-remove");
+//     $(".btn-danger").html("Remove");
+//     $(".btn-info").removeClass("glyphicon glyphicon-ok");
+//     $(".btn-info").html("Save");
+//   }
+// });
 
 $(function () {
   $("#addNew").click(addnew);
@@ -57,7 +57,7 @@ function addnew() {
       age +
       "</td>" +
       "<td class='city'>" +
-      +city +
+      city +
       "</td>" +
       "<td>" +
       "<button class='btn btn-warning float right'  onclick= onEdit(" +

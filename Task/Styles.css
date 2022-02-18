@@ -5,8 +5,8 @@
 }
 
 .table{
-    border: 2px solid blue;
-    table-layout: str;
+    /* border: 2px solid blue; */
+    table-layout: str;    
 }
 th,td{
     border: 2px solid yellow;
@@ -38,6 +38,28 @@ td select{
     margin-left: 5px;
     margin-right: 5px;
 }
+ /* #name{
+    float: right;
+} */
+/* #age{
+    float: right;
+} */
+/* #city-names{
+    float: right;
+    display: inline;
+    border: 1px solid green;
+} */
+/* label, #city-names {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid green;
+} */
+/* #radio{
+    float: right;
+    padding-right: 0px;
+    border: 1px solid green;
+} */
 #city-names{
     height: 24px;
 }
