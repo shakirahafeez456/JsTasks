@@ -5,7 +5,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="./JS.js"></script>
     
-
     <link rel="stylesheet" href="./bootstrap.min.css" />
     <link
       rel="stylesheet"
@@ -13,8 +12,11 @@
     />
     <link rel="stylesheet" href="./Styles.css" />
   </head>
+
   <body>
     <div class="container-fluid">
+
+      <!-- alerts -->
       <div class="alert alert-primary" role="alert" style="display: none">
         Record Saved!
       </div>
@@ -33,45 +35,46 @@
         Create New
       </button>
 
+      <!-- table -->
       <table id="list" class="table table-dark">
         <thead>
           <tr>
-            <th class="col col-sm-1 col-md-1 col-lg-1">Id</th>
+            <th class="col col-sm-0.5 col-md-0.5 col-lg-0.5">Id</th>
             <th class="col col-sm-1 col-md-1 col-lg-1">Name</th>
             <th class="col col-sm-1 col-md-1 col-lg-1">Gender</th>
             <th class="col col-sm-1 col-md-1 col-lg-1">Age</th>
             <th class="col col-sm-1 col-md-1 col-lg-1">City</th>
             <th class="col col-sm-1 col-md-1 col-lg-1">Contact No.</th>
-            <th class="col col-sm-1 col-md-1 col-lg-1">Address</th>
+            <th class="col col-sm-1.5 col-md-1.5 col-lg-1.5">Address</th>
             <th class="col col-sm-1 col-md-1 col-lg-1">Email</th>
-            <th class="col col-sm-1 col-md-1 col-lg-1">CNIC</th>
-            <th class="col col-sm-2 col-md-2 col-lg-2">Action</th>
+            <th class="col col-sm-1.5 col-md-1.5 col-lg-1.5">CNIC</th>
+            <th class="col col-sm-1.5 col-md-1.5 col-lg-1.5">Action</th>
           </tr>
         </thead>
 
         <tbody>
           <tr id="1">
-            <td class="id col col-sm-1 col-md-1 col-lg-1">1</td>
+            <td class="id col col-sm-0.5 col-md-0.5 col-lg-0.5">1</td>
             <td class="name col col-sm-1 col-md-1 col-lg-1">Abc Def</td>
             <td class="gender col col-sm-1 col-md-1 col-lg-1">female</td>
             <td class="age col col-sm-1 col-md-1 col-lg-1">21</td>
             <td class="city col col-sm-1 col-md-1 col-lg-1">Karachi</td>
-            <td class="num col col-sm-1 col-md-1 col-lg-1">03061706313</td>
-            <td class="col col-sm-1 col-md-1 col-lg-1">abc def ghi xyz 8</td>
-            <td class="col col-sm-1 col-md-1 col-lg-1">hafeezshakira@gmail.com</td>
-            <td class="col col-sm-1 col-md-1 col-lg-1">55555-77777777-1</td>
-            <td class="col-sm-2 col-md-2 col-lg-2">
-              <button class="btn btn-warning float right " onclick="onEdit(1)">
-                Edit
+            <td class="num col col-sm-1 col-md-1 col-lg-1">921234567890</td>
+            <td class="address col col-sm-1.5 col-md-1.5 col-lg-1.5">abc def ghi xyz 8</td>
+            <td class="email col col-sm-1 col-md-1 col-lg-1">hafeezshakira@gmail.com</td>
+            <td class="cnic col col-sm-1.5 col-md-1.5 col-lg-1.5">55555-77777777-1</td>
+            <td class="col-sm-1.5 col-md-1.5 col-lg-1.5 ">
+              <button class="btn btn-warning float right glyphicon glyphicon-edit" onclick="onEdit(1)">
+                <!-- Edit -->
               </button>
-              <button class="btn btn-info float right" onclick="onSave(1)">
-                Save
+              <button class="btn btn-info float right glyphicon glyphicon-ok" onclick="onSave(1)">
+                <!-- Save -->
               </button>
               <button
-                class="btn btn-danger float right"
+                class="btn btn-danger float right glyphicon glyphicon-remove"
                 onclick="onDelete(event)"
               >
-                Remove
+                <!-- Remove -->
               </button>
             </td>
           </tr>
@@ -110,7 +113,6 @@
               <div style="display: none" id="show">
                 ID: 
                 <input type="number" id="id" readonly />
-                
               </div>
 
               <div class="mx-3 my-2">
@@ -118,26 +120,23 @@
                 <input type="text" class="col col-xs-12 col-sm-12 col-md-8 px-0" id="name" placeholder="Enter Name" />
               </div>
 
-              <div id="gen" class="mx-3 my-2">
+              <div class="mx-3 my-2">
                 <label for="gender" class="col col-xs-12 col-sm-12 col-md-3 px-0">Gender: </label>
                 <div id="radio" class="col col-xs-12 col-sm-12 col-md-9 pr-0">
                   <input
                     type="radio"
                     name="gender"
                     value="male"
-                    class="gender"
                   />male
                   <input
                     type="radio"
                     name="gender"
                     value="female"
-                    class="gender"
                   />female
                   <input
                     type="radio"
                     name="gender"
                     value="other"
-                    class="gender"
                   />other
                 </div>
               </div>
@@ -156,12 +155,40 @@
 
               <form class="mx-3 my-2">
                 <label for="city" class="col col-xs-12 col-sm-12 col-md-4 px-0">City:</label>
-                <select name="city-names" id="city-names" class="city col col-xs-12 col-sm-12 col-md-8 px-0">
+                <select name="city-names" id="city-names" class="col col-xs-12 col-sm-12 col-md-8 px-0">
                   <option value="Lahore">Lahore</option>
                   <option value="Karachi">Karachi</option>
                   <option value="Islamabad">Islamabad</option>
                 </select>
               </form>
+
+              <div class="mx-3 my-2">
+                <label for="num" class="col col-xs-12 col-sm-12 col-md-4 px-0">Contact No: </label>
+                <input
+                class="col col-xs-12 col-sm-12 col-md-8 px-0"
+                  id="num"
+                  placeholder="92xxxxxxxxxx"
+                />
+              </div>
+
+              <div class="mx-3 my-2">
+                <label for="address" class="col col-xs-12 col-sm-12 col-md-4 px-0">Address: </label>
+                <input type="text" class="col col-xs-12 col-sm-12 col-md-8 px-0" id="address" placeholder="Enter Address" />
+              </div>
+
+              <div class="mx-3 my-2">
+                <label for="email" class="col col-xs-12 col-sm-12 col-md-4 px-0">Email: </label>
+                <input type="text" class="col col-xs-12 col-sm-12 col-md-8 px-0" id="email" placeholder="abc@xyz.com" />
+              </div>
+
+              <div class="mx-3 my-2">
+                <label for="cnic" class="col col-xs-12 col-sm-12 col-md-4 px-0">CNIC: </label>
+                <input
+                class="col col-xs-12 col-sm-12 col-md-8 px-0"
+                  id="cnic"
+                  placeholder="55555-7777777-1"
+                />
+              </div>
 
             </div>
           </div>

@@ -1,12 +1,13 @@
 .table, tr,th,td {
     border-collapse: collapse;
-    padding: 10px;
+    /* padding: 4px; */
     text-align: center;
 }
-
+*{
+    box-sizing: border-box;
+}
 .table{
-    /* border: 2px solid blue; */
-    table-layout: str;    
+    table-layout: auto;    
 }
 th,td{
     border: 2px solid yellow;
@@ -19,11 +20,22 @@ td input{
     background-color: #373b3e;
     color: white;
 }
+.age input{
+    width: 80px;
+    height: 27px;
+}
+.name input{
+    width: 110px;
+    height: 27px;
+}
+td .gender{
+    border: 4px solid pink;
+}
 td select{
     background-color: #373b3e;
     color: #ffffff;
     height: 27px;
-    width: 200px;
+    width: auto;
 }
 #reset{
     margin-right: 5px;
@@ -55,11 +67,11 @@ td select{
     padding: 5px;
     border: 1px solid green;
 } */
-/* #radio{
+#radio{
     float: right;
-    padding-right: 0px;
-    border: 1px solid green;
-} */
+    padding-left: 0px;
+    width: 180px;
+}
 #city-names{
     height: 24px;
 }
