@@ -1,6 +1,5 @@
 .table, tr,th,td {
     border-collapse: collapse;
-    /* padding: 4px; */
     text-align: center;
 }
 *{
@@ -21,12 +20,18 @@ td input{
     color: white;
 }
 .age input{
-    width: 80px;
+    width: 60px;
     height: 27px;
 }
 .name input{
     width: 110px;
     height: 27px;
+}
+.cnic input{
+    width: 140px;
+}
+.num input{
+    width: 110px;
 }
 td .gender{
     border: 4px solid pink;

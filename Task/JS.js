@@ -1,22 +1,22 @@
 {//responsiveness on buttons, changes to icons
-// $(window).on("resize", function () {
-//   var win = $(this);
-//   if (win.width() < 600) {
-//     $(".btn-warning").addClass("glyphicon glyphicon-edit");
-//     $(".btn-warning").html("");
-//     $(".btn-danger").addClass("glyphicon glyphicon-remove");
-//     $(".btn-danger").html("");
-//     $(".btn-info").addClass("glyphicon glyphicon-ok");
-//     $(".btn-info").html("");
-//   } else {
-//     $(".btn-warning").removeClass("glyphicon glyphicon-edit");
-//     $(".btn-warning").html("Edit");
-//     $(".btn-danger").removeClass("glyphicon glyphicon-remove");
-//     $(".btn-danger").html("Remove");
-//     $(".btn-info").removeClass("glyphicon glyphicon-ok");
-//     $(".btn-info").html("Save");
-//   }
-// });
+  // $(window).on("resize", function () {
+  //   var win = $(this);
+  //   if (win.width() < 600) {
+  //     $(".btn-warning").addClass("glyphicon glyphicon-edit");
+  //     $(".btn-warning").html("");
+  //     $(".btn-danger").addClass("glyphicon glyphicon-remove");
+  //     $(".btn-danger").html("");
+  //     $(".btn-info").addClass("glyphicon glyphicon-ok");
+  //     $(".btn-info").html("");
+  //   } else {
+  //     $(".btn-warning").removeClass("glyphicon glyphicon-edit");
+  //     $(".btn-warning").html("Edit");
+  //     $(".btn-danger").removeClass("glyphicon glyphicon-remove");
+  //     $(".btn-danger").html("Remove");
+  //     $(".btn-info").removeClass("glyphicon glyphicon-ok");
+  //     $(".btn-info").html("Save");
+  //   }
+  // });
 }
 
 $(function () {
@@ -38,7 +38,6 @@ function addnew() {
   var address = $("#address").val();
   var email = $("#email").val();
   var cnic = $("#cnic").val();
-
 
   if (!check()) {
     $("#addNew").removeAttr("data-dismiss", "modal");
@@ -101,31 +100,31 @@ function addnew() {
   $(".alert-info").delay(1500).fadeOut();
 
   {
-  if (city == "Karachi") {
-    $("#" + id)
-      .children(".city")
-      .children("select, option")
-      .append(
-        "<option value='Lahore'>Lahore</option>" +
-          "<option value='Islamabad'>Islamabad</option>"
-      );
-  } else if (city == "Lahore") {
-    $("#" + id)
-      .children(".city")
-      .children("select, option")
-      .append(
-        "<option value='Karachi'>Karachi</option>" +
-          "<option value='Islamabad'>Islamabad</option>"
-      );
-  } else if (city == "Islamabad") {
-    $("#" + id)
-      .children(".city")
-      .children("select, option")
-      .append(
-        "<option value='Karachi'>Karachi</option>" +
-          "<option value='Lahore'>Lahore</option>"
-      );
-  }
+    if (city == "Karachi") {
+      $("#" + id)
+        .children(".city")
+        .children("select, option")
+        .append(
+          "<option value='Lahore'>Lahore</option>" +
+            "<option value='Islamabad'>Islamabad</option>"
+        );
+    } else if (city == "Lahore") {
+      $("#" + id)
+        .children(".city")
+        .children("select, option")
+        .append(
+          "<option value='Karachi'>Karachi</option>" +
+            "<option value='Islamabad'>Islamabad</option>"
+        );
+    } else if (city == "Islamabad") {
+      $("#" + id)
+        .children(".city")
+        .children("select, option")
+        .append(
+          "<option value='Karachi'>Karachi</option>" +
+            "<option value='Lahore'>Lahore</option>"
+        );
+    }
   }
 
   id++;
@@ -135,13 +134,13 @@ function onEdit(iD) {
   $(".btn-warning").prop("disabled", true);
   var id = $("#" + iD);
 
-//
+  //
   var colName = id.children(".name").html();
   id.children(".name").html("");
   id.children(".name").append("<input type='text'  style='white-space: pre'>");
   id.children(".name").children("input").prop("value", colName);
 
-//
+  //
   var colGender = id.children(".gender").html();
   id.children(".gender").html("");
   id.children(".gender").append(
@@ -156,12 +155,12 @@ function onEdit(iD) {
     .children("input[name=gender][value=" + colGender + "]")
     .prop("checked", true);
 
-//
+  //
   var colAge = id.children(".age").html();
   id.children(".age").html("");
-  id.children(".age").append("<input type='number' value="+colAge+">");
+  id.children(".age").append("<input type='number' value=" + colAge + ">");
 
-//
+  //
   var colCity = id.children(".city").html();
   id.children(".city").html("");
   id.children(".city").append(
@@ -172,25 +171,27 @@ function onEdit(iD) {
   );
   id.children(".city").children("select").val(colCity);
 
-//
+  //
   var colNum = id.children(".num").html();
   id.children(".num").html("");
   id.children(".num").append("<input >");
   id.children(".num").children("input").prop("value", colNum);
 
-//
-  var colAddress  = id.children(".address").html();
+  //
+  var colAddress = id.children(".address").html();
   id.children(".address").html("");
-  id.children(".address").append("<input type='text'  style='white-space: pre'>");
+  id.children(".address").append(
+    "<input type='text'  style='white-space: pre'>"
+  );
   id.children(".address").children("input").prop("value", colAddress);
 
-//
+  //
   var colEmail = id.children(".email").html();
   id.children(".email").html("");
   id.children(".email").append("<input type='text'>");
   id.children(".email").children("input").prop("value", colEmail);
 
-//
+  //
   var colCnic = id.children(".cnic").html();
   id.children(".cnic").html("");
   id.children(".cnic").append("<input >");
@@ -243,14 +244,21 @@ function checkVal(id) {
   var colName = ID.children(".name").children("input").prop("value");
   var colGender = ID.children(".gender").children("input").prop("value");
   var colAge = ID.children(".age").children("input").prop("value");
+  var colNum = ID.children(".num").children("input").prop("value");
+  var colCnic = ID.children(".cnic").children("input").prop("value");
+  var colAddress = ID.children(".address").children("input").prop("value");
+  var colEmail = ID.children(".email").children("input").prop("value");
+
   var a,
     b,
-    c = false;
+    c,
+    d,
+    e,
+    f,
+    g = false;
 
   //name
   {
-    var yz = "/^[a-zA-Z]$/";
-
     if (
       colName.match("^[a-zA-Z'-pL]+(?:(?! {2})[a-zA-Z'-pL ])*[a-zA-Z'-pL]+$")
     ) {
@@ -281,7 +289,60 @@ function checkVal(id) {
     }
   }
 
-  if (a == true && b == true && c == true) {
+  //92xxxxxxxxxx
+  {
+    var phoneno = /^\d{12}$/;
+    var first_three = colNum.slice(0, 2);
+
+    if (first_three == 92 && colNum.match(phoneno)) {
+      ID.children(".num").children("input").removeClass("error");
+      d = true;
+    } else ID.children(".num").children("input").addClass("error");
+  }
+
+  //CNIC
+  {
+    //xxxxx - xxxxxxx - x;
+    var cnic = /^\(?([0-9]{5})\)?[-. ]?([0-9]{7})[-. ]?([0-9]{1})$/;
+    if (colCnic.match(cnic)) {
+      ID.children(".cnic").children("input").removeClass("error");
+      e = true;
+    } else ID.children(".cnic").children("input").addClass("error");
+  }
+
+  //address
+  {
+    if (
+      colAddress.match("^[a-zA-Z'-pL]+(?:(?! {2})[a-zA-Z'-pL ])*[a-zA-Z'-pL]+$")
+    ) {
+      ID.children(".address").children("input").removeClass("error");
+      f = true;
+    } else {
+      ID.children(".address").children("input").addClass("error");
+    }
+  }
+
+  //email
+  {
+    if (
+      colEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+    ) {
+      ID.children(".email").children("input").removeClass("error");
+      g = true;
+    } else {
+      ID.children(".email").children("input").addClass("error");
+    }
+  }
+
+  if (
+    a == true &&
+    b == true &&
+    c == true &&
+    d == true &&
+    e == true &&
+    f == true &&
+    g == true
+  ) {
     console.log("success");
     $(".btn-warning").prop("disabled", false);
     return true;
@@ -315,7 +376,7 @@ function check() {
 
   //age
   {
-  var age = $("#age").val();
+    var age = $("#age").val();
     if (age > 0 && age < 100) {
       $("#age").removeClass("error");
       b = true;
@@ -326,7 +387,7 @@ function check() {
 
   //gender
   {
-  var gender = $("input[name='gender']:checked").val();
+    var gender = $("input[name='gender']:checked").val();
     if (gender) {
       $("#radio").removeClass("error");
       c = true;
@@ -337,7 +398,7 @@ function check() {
 
   //city
   {
-  var city = $("#city-names").val();
+    var city = $("#city-names").val();
     if (city) {
       $("#city-names").removeClass("error");
       h = true;
@@ -413,7 +474,9 @@ function check() {
 }
 
 function Reset() {
-  $("#name, #age, #city-names, #radio, #num, #email, #cnic, #address").removeClass("error");
+  $(
+    "#name, #age, #city-names, #radio, #num, #email, #cnic, #address"
+  ).removeClass("error");
   $("#name").val("");
   $("input[name=gender]").prop("checked", false);
   $("#age").val("");
