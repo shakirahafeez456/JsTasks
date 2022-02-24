@@ -1,4 +1,5 @@
-{//responsiveness on buttons, changes to icons
+{
+  //responsiveness on buttons, changes to icons
   // $(window).on("resize", function () {
   //   var win = $(this);
   //   if (win.width() < 600) {
@@ -22,12 +23,13 @@
 $(function () {
   $("#addNew").click(addnew);
   $("#reset").click(Reset);
-  $("#myModal").on("shown.bs.modal", function () {
-    $("#myInput").trigger("focus");
-  });
   $(".btn-secondary").click(Reset);
+  locStorage();
+  console.log(localStorage.length); 
 });
-var id = 2;
+let index = localStorage.length;
+var id = index;
+
 
 function addnew() {
   var name = $("#name").val();
@@ -48,6 +50,82 @@ function addnew() {
 
   Reset();
 
+  //locStorage
+  { 
+    let arr = [];
+    arr[index] = {
+      "id": index,
+      "name": name,
+      "radioValue": radioValue,
+      "age": age,
+      "city": city,
+      "num": num,
+      "address": address,
+      "email": email,
+      "cnic": cnic
+    };
+  
+    localStorage.setItem("arr"+[index]+"", JSON.stringify(arr[index]));
+  }
+
+  {
+  appenD(id,name,radioValue,age,city,num,address,email,cnic)
+  $(".alert-info").show();
+  $(".alert-info").delay(1500).fadeOut(); 
+  {
+    if (city == "Karachi") {
+      $("#" + id)
+        .children(".city")
+        .children("select, option")
+        .append(
+          "<option value='Lahore'>Lahore</option>" +
+            "<option value='Islamabad'>Islamabad</option>"
+        );
+    } else if (city == "Lahore") {
+      $("#" + id)
+        .children(".city")
+        .children("select, option")
+        .append(
+          "<option value='Karachi'>Karachi</option>" +
+            "<option value='Islamabad'>Islamabad</option>"
+        );
+    } else if (city == "Islamabad") {
+      $("#" + id)
+        .children(".city")
+        .children("select, option")
+        .append(
+          "<option value='Karachi'>Karachi</option>" +
+            "<option value='Lahore'>Lahore</option>"
+        );
+    }
+  }
+  }
+
+  id++;
+  index++;
+}
+
+function locStorage(){
+  for(var i= 0;i<localStorage.length;i++){
+    let retrievedObject = [];
+    retrievedObject[i] = JSON.parse(localStorage.getItem("arr"+[i]+""));
+
+  retrievedObject.forEach(function(key){
+    var id = key.id;
+    var name = key.name;
+    var radioValue = key.radioValue;
+    var age = key.age;
+    var city = key.city;
+    var num = key.num;
+    var address = key.address;
+    var email = key.email;
+    var cnic = key.cnic;
+  appenD(id,name,radioValue,age,city,num,address,email,cnic);
+  })
+}
+}
+
+function appenD(id,name,radioValue,age,city,num,address,email,cnic){
   $("#list").append(
     "<tr id=" +
       id +
@@ -96,38 +174,6 @@ function addnew() {
       "</td>" +
       "</tr>"
   );
-  $(".alert-info").show();
-  $(".alert-info").delay(1500).fadeOut();
-
-  {
-    if (city == "Karachi") {
-      $("#" + id)
-        .children(".city")
-        .children("select, option")
-        .append(
-          "<option value='Lahore'>Lahore</option>" +
-            "<option value='Islamabad'>Islamabad</option>"
-        );
-    } else if (city == "Lahore") {
-      $("#" + id)
-        .children(".city")
-        .children("select, option")
-        .append(
-          "<option value='Karachi'>Karachi</option>" +
-            "<option value='Islamabad'>Islamabad</option>"
-        );
-    } else if (city == "Islamabad") {
-      $("#" + id)
-        .children(".city")
-        .children("select, option")
-        .append(
-          "<option value='Karachi'>Karachi</option>" +
-            "<option value='Lahore'>Lahore</option>"
-        );
-    }
-  }
-
-  id++;
 }
 
 function onEdit(iD) {
@@ -324,9 +370,7 @@ function checkVal(id) {
 
   //email
   {
-    if (
-      colEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
-    ) {
+    if (colEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       ID.children(".email").children("input").removeClass("error");
       g = true;
     } else {
@@ -410,7 +454,7 @@ function check() {
   //92xxxxxxxxxx
   {
     var num = $("#num").val();
-    var phoneno = /^\d{12}$/;
+    var phoneno = /^\d{2}$/;
     var first_three = num.slice(0, 2);
 
     if (first_three == 92 && num.match(phoneno)) {
@@ -478,7 +522,7 @@ function Reset() {
     "#name, #age, #city-names, #radio, #num, #email, #cnic, #address"
   ).removeClass("error");
   $("#name").val("");
-  $("input[name=gender]").prop("checked", false);
+  $("#radio").children("input").prop("checked", false);
   $("#age").val("");
   $("#city-names").val("");
   $("#num").val("");
@@ -489,8 +533,8 @@ function Reset() {
 
 function onDelete(e) {
   var tag = e.target;
-  console.log(e);
   var ptag = tag.parentNode;
   var pptag = ptag.parentNode;
   pptag.parentNode.removeChild(pptag);
+  localStorage.removeItem(tag);
 }
