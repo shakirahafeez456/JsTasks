@@ -24,12 +24,11 @@ $(function () {
   $("#addNew").click(addnew);
   $("#reset").click(Reset);
   $(".btn-secondary").click(Reset);
-  locStorage();
-  console.log(localStorage.length); 
+  // locStorage();
+  console.log(localStorage.length);
 });
 let index = localStorage.length;
-var id = index;
-
+// var id = index;
 
 function addnew() {
   var name = $("#name").val();
@@ -51,81 +50,94 @@ function addnew() {
   Reset();
 
   //locStorage
-  { 
-    let arr = [];
-    arr[index] = {
-      "id": index,
-      "name": name,
-      "radioValue": radioValue,
-      "age": age,
-      "city": city,
-      "num": num,
-      "address": address,
-      "email": email,
-      "cnic": cnic
-    };
-  
-    localStorage.setItem("arr"+[index]+"", JSON.stringify(arr[index]));
-  }
+    // for (let x = 0; x < localStorage.length; x++) 
+    {
+      let arr = [];
+      console.log("Found " + arr[index]);
+
+      // if (!arr[index]) {
+        arr[index] = {
+          id: index,
+          name: name,
+          radioValue: radioValue,
+          age: age,
+          city: city,
+          num: num,
+          address: address,
+          email: email,
+          cnic: cnic,
+        };
+
+        localStorage.setItem("arr" + [index] + "", JSON.stringify(arr[index]));
+      // } 
+      // else {
+      //   console.log("not found " + index + " " + arr[index]);
+      // }
+    
+    }
 
   {
-  appenD(id,name,radioValue,age,city,num,address,email,cnic)
-  $(".alert-info").show();
-  $(".alert-info").delay(1500).fadeOut(); 
-  {
-    if (city == "Karachi") {
-      $("#" + id)
-        .children(".city")
-        .children("select, option")
-        .append(
-          "<option value='Lahore'>Lahore</option>" +
-            "<option value='Islamabad'>Islamabad</option>"
-        );
-    } else if (city == "Lahore") {
-      $("#" + id)
-        .children(".city")
-        .children("select, option")
-        .append(
-          "<option value='Karachi'>Karachi</option>" +
-            "<option value='Islamabad'>Islamabad</option>"
-        );
-    } else if (city == "Islamabad") {
-      $("#" + id)
-        .children(".city")
-        .children("select, option")
-        .append(
-          "<option value='Karachi'>Karachi</option>" +
-            "<option value='Lahore'>Lahore</option>"
-        );
+    appenD(id, name, radioValue, age, city, num, address, email, cnic);
+    $(".alert-info").show();
+    $(".alert-info").delay(1500).fadeOut();
+    {
+      if (city == "Karachi") {
+        $("#" + id)
+          .children(".city")
+          .children("select, option")
+          .append(
+            "<option value='Lahore'>Lahore</option>" +
+              "<option value='Islamabad'>Islamabad</option>"
+          );
+      } else if (city == "Lahore") {
+        $("#" + id)
+          .children(".city")
+          .children("select, option")
+          .append(
+            "<option value='Karachi'>Karachi</option>" +
+              "<option value='Islamabad'>Islamabad</option>"
+          );
+      } else if (city == "Islamabad") {
+        $("#" + id)
+          .children(".city")
+          .children("select, option")
+          .append(
+            "<option value='Karachi'>Karachi</option>" +
+              "<option value='Lahore'>Lahore</option>"
+          );
+      }
     }
-  }
   }
 
   id++;
   index++;
 }
 
-function locStorage(){
-  for(var i= 0;i<localStorage.length;i++){
-    let retrievedObject = [];
-    retrievedObject[i] = JSON.parse(localStorage.getItem("arr"+[i]+""));
+// function locStorage() {
+//   for (let i = 0; i <= localStorage.length; i++) {
+//     let retrievedObject = [];
+//     retrievedObject[i] = JSON.parse(localStorage.getItem("arr" + [i] + ""));
 
-  retrievedObject.forEach(function(key){
-    var id = key.id;
-    var name = key.name;
-    var radioValue = key.radioValue;
-    var age = key.age;
-    var city = key.city;
-    var num = key.num;
-    var address = key.address;
-    var email = key.email;
-    var cnic = key.cnic;
-  appenD(id,name,radioValue,age,city,num,address,email,cnic);
-  })
-}
-}
+//     if (retrievedObject[i]) {
+//       retrievedObject.forEach(function (key) {
+//         var id = key.id;
+//         var name = key.name;
+//         var radioValue = key.radioValue;
+//         var age = key.age;
+//         var city = key.city;
+//         var num = key.num;
+//         var address = key.address;
+//         var email = key.email;
+//         var cnic = key.cnic;
+//         appenD(id, name, radioValue, age, city, num, address, email, cnic);
+//       });
+//     } else {
+//       console.log("not found" + retrievedObject[i]);
+//     }
+//   }
+// }
 
-function appenD(id,name,radioValue,age,city,num,address,email,cnic){
+function appenD(id, name, radioValue, age, city, num, address, email, cnic) {
   $("#list").append(
     "<tr id=" +
       id +
@@ -168,7 +180,9 @@ function appenD(id,name,radioValue,age,city,num,address,email,cnic){
       ") >" +
       // " Save " +
       "</button>" +
-      "<button class='btn btn-danger float right glyphicon glyphicon-remove' onclick= onDelete(event) >" +
+      "<button class='btn btn-danger float right glyphicon glyphicon-remove' onclick= onDelete(" +
+      id +
+      ",event) >" +
       // " Remove " +
       "</button>" +
       "</td>" +
@@ -531,10 +545,10 @@ function Reset() {
   $("#address").val("");
 }
 
-function onDelete(e) {
+function onDelete(i, e) {
   var tag = e.target;
   var ptag = tag.parentNode;
   var pptag = ptag.parentNode;
   pptag.parentNode.removeChild(pptag);
-  localStorage.removeItem(tag);
+  localStorage.removeItem("arr" + [i]);
 }
