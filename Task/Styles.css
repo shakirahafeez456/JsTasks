@@ -67,3 +67,9 @@ td select{
 .btn-success{
     margin-right: 15px;
 }
+.address{
+    width: 200px;
+}
+.age{
+    width: 10px;
+}

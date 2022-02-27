@@ -1,34 +1,12 @@
-{
-  //responsiveness on buttons, changes to icons
-  // $(window).on("resize", function () {
-  //   var win = $(this);
-  //   if (win.width() < 600) {
-  //     $(".btn-warning").addClass("glyphicon glyphicon-edit");
-  //     $(".btn-warning").html("");
-  //     $(".btn-danger").addClass("glyphicon glyphicon-remove");
-  //     $(".btn-danger").html("");
-  //     $(".btn-info").addClass("glyphicon glyphicon-ok");
-  //     $(".btn-info").html("");
-  //   } else {
-  //     $(".btn-warning").removeClass("glyphicon glyphicon-edit");
-  //     $(".btn-warning").html("Edit");
-  //     $(".btn-danger").removeClass("glyphicon glyphicon-remove");
-  //     $(".btn-danger").html("Remove");
-  //     $(".btn-info").removeClass("glyphicon glyphicon-ok");
-  //     $(".btn-info").html("Save");
-  //   }
-  // });
-}
-
 $(function () {
   $("#addNew").click(addnew);
   $("#reset").click(Reset);
   $(".btn-secondary").click(Reset);
-  // locStorage();
+  locStorage();
   console.log(localStorage.length);
 });
 let index = localStorage.length;
-// var id = index;
+var id = index;
 
 function addnew() {
   var name = $("#name").val();
@@ -50,10 +28,10 @@ function addnew() {
   Reset();
 
   //locStorage
-    // for (let x = 0; x < localStorage.length; x++) 
+    // for (let x = 0; x < localStorage.length; x++) //to add new records at the place of deleted records
     {
       let arr = [];
-      console.log("Found " + arr[index]);
+      // console.log("Found " + arr[index]);
 
       // if (!arr[index]) {
         arr[index] = {
@@ -67,8 +45,10 @@ function addnew() {
           email: email,
           cnic: cnic,
         };
+        
 
         localStorage.setItem("arr" + [index] + "", JSON.stringify(arr[index]));
+        console.log(arr[0]);
       // } 
       // else {
       //   console.log("not found " + index + " " + arr[index]);
@@ -113,29 +93,30 @@ function addnew() {
   index++;
 }
 
-// function locStorage() {
-//   for (let i = 0; i <= localStorage.length; i++) {
-//     let retrievedObject = [];
-//     retrievedObject[i] = JSON.parse(localStorage.getItem("arr" + [i] + ""));
+function locStorage() {
+  for (let i = 0; i <= index+1; i++) {
+    let retrievedObject = [];
+    retrievedObject[i] = JSON.parse(localStorage.getItem("arr" + [i] + ""));
 
-//     if (retrievedObject[i]) {
-//       retrievedObject.forEach(function (key) {
-//         var id = key.id;
-//         var name = key.name;
-//         var radioValue = key.radioValue;
-//         var age = key.age;
-//         var city = key.city;
-//         var num = key.num;
-//         var address = key.address;
-//         var email = key.email;
-//         var cnic = key.cnic;
-//         appenD(id, name, radioValue, age, city, num, address, email, cnic);
-//       });
-//     } else {
-//       console.log("not found" + retrievedObject[i]);
-//     }
-//   }
-// }
+    if (retrievedObject[i]) {
+      retrievedObject.forEach(function (key) {
+        var id = key.id;
+        var name = key.name;
+        var radioValue = key.radioValue;
+        var age = key.age;
+        var city = key.city;
+        var num = key.num;
+        var address = key.address;
+        var email = key.email;
+        var cnic = key.cnic;
+        appenD(id, name, radioValue, age, city, num, address, email, cnic);
+      });
+    } else {
+      // console.log("not found" + retrievedObject[i]);
+      continue;
+    }
+  }
+}
 
 function appenD(id, name, radioValue, age, city, num, address, email, cnic) {
   $("#list").append(
@@ -411,7 +392,7 @@ function checkVal(id) {
 }
 
 function check() {
-  var ID = $("#" + id);
+  // var ID = $("#" + id);
   var a,
     b,
     c,
