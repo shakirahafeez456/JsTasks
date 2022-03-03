@@ -7,66 +7,54 @@ let index = localStorage.length;
 var id = index;
 
 function onChangeValidation(){
-  $.validator.addMethod("name",function(value,element){
-    debugger;
+ 
+  $.validator.addMethod("namenew",function(value,element){
     return value.match(/^[A-Za-z][A-Za-z,.'-]+ +[A-Za-z][A-Za-z,.'-]+$/)
-  });
+  },"Name should only be chars or -");
+
   $.validator.addMethod("cnic",function(value,element){
     return value.match(/^\(?([0-9]{5})\)?[-. ]?([0-9]{7})[-. ]?([0-9]{1})$/)
-  });
+  },"Should be 13 numbers");
 
   $.validator.addMethod("num",function(value,element){
     return value.match(/^\d{12}$/)
-  });
-
-  
+  },"12 digits required!");
 
       $("#basic-form").validate({
+
         errorClass: "error fail-alert",
         validClass: "valid success-alert",
 
         rules: {
-          name : {
+          namenew : {
             required: true,
-            name: true
+            namenew: true,
           },
-          // age: {
-          //   required: true,
-          //   number: true,
-          //   min: 1,
-          //   max: 100
-          // },
-          // email: {
-          //   required: true,
-          //   email: true
-          // },
+          email:{
+            required: true,
+            email: true
+          },
           num:{
             required: true,
-            num: true
+            num: true,
           },
-          // address: {
-          //   required: true
-          // },
           cnic: {
             required: true,
-            cnic: true
+            cnic: true,
           }
         },
-        ///
         messages : {
-          name: {
-          name: 'Name should only be chars or -',
-          required: 'Enter name'
+          namenew: {
+          required: 'Enter name',
           },
-          // age:{},
-          // email:{},
           cnic:{
-            cnic: 'Should be 13 numbers',
-            required: 'Enter cnic'
+            required: 'Enter cnic',
           },
           num:{
-            num: 'not matched c',
-            required: 'Enter number'
+            required: 'Enter number',
+          },
+          email:{
+            required: 'enter email'
           }
         }
       });
@@ -110,7 +98,6 @@ function addnew() {
         };
 
         localStorage.setItem("arr" + [index] + "", JSON.stringify(arr[index]));
-    
     }
 
   {
@@ -225,6 +212,9 @@ function appenD(id, name, radioValue, age, city, num, address, email, cnic) {
       "</td>" +
       "</tr>"
   );
+  $(
+    "#name, #age, #city-names, #radio, #num, #email, #cnic, #address"
+  ).removeClass("valid success-alert");
 }
 
 function onEdit(iD) {
@@ -477,7 +467,8 @@ function check() {
   //name
   {
     var name = $("#name").val();
-    if (name.match("^[a-zA-Z'-pL]+(?:(?! {2})[a-zA-Z'-pL ])*[a-zA-Z'-pL]+$")) {
+    var regexn = /^[a-zA-Z'-pL]+(?:(?! {2})[a-zA-Z'-pL ])*[a-zA-Z'-pL]+$/;
+    if (name.match(regexn)) {
       $("#name").removeClass("error");
       a = true;
     } else {
