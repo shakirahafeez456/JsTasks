@@ -1,72 +1,89 @@
-.table, tr,th,td {
-    border-collapse: collapse;
-    text-align: center;
+.table,
+tr,
+th,
+td {
+  border-collapse: collapse;
+  text-align: center;
 }
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-.table{
-    table-layout: auto;    
+.table {
+  table-layout: auto;
 }
-th,td{
-    border: 2px solid yellow;
+th,
+td {
+  border: 2px solid yellow;
 }
-.error{
-    border: 1px solid red;
-    background-color:1px solid red;
+.error {
+  border: 1px solid red;
+  /* background-color: 1px solid red; */
 }
-td input{
-    background-color: #373b3e;
-    color: white;
+td input {
+  background-color: #373b3e;
+  color: white;
 }
-.age input{
-    width: 60px;
-    height: 27px;
+.age input {
+  width: 60px;
+  height: 27px;
 }
-.name input{
-    width: 110px;
-    height: 27px;
+.name input {
+  width: 110px;
+  height: 27px;
 }
-.gender input{
-    width: 30px;
-    float: left;
+.gender input {
+  width: 30px;
+  float: left;
 }
-.cnic input{
-    width: 140px;
+.cnic input {
+  width: 140px;
 }
-.num input{
-    width: 110px;
+.num input {
+  width: 110px;
 }
-td select{
-    background-color: #373b3e;
-    color: #ffffff;
-    height: 27px;
-    width: auto;
+td select {
+  background-color: #373b3e;
+  color: #ffffff;
+  height: 27px;
+  width: auto;
 }
-#reset{
-    margin-right: 5px;
-    margin-left: 5px;
+#reset {
+  margin-right: 5px;
+  margin-left: 5px;
 }
-.btn-primary{
-    float: right;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.btn-primary {
+  float: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-.btn-info{
-    margin-left: 5px;
-    margin-right: 5px;
+.btn-info {
+  margin-left: 5px;
+  margin-right: 5px;
 }
-#radio{
-    float: right;
-    padding-left: 0px;
-    width: 180px;
+#radio {
+  float: right;
+  width: 170px;
+  height: 24px;
+  border: 2px solid blue;
 }
-#city-names{
-    height: 24px;
+#city-names {
+  height: 24px;
 }
-.btn-success{
-    margin-right: 15px;
+.btn-success {
+  margin-right: 15px;
 }
-.address{
-    width: 200px;
+.address {
+  width: 200px;
+}
+
+label.error.fail-alert {
+  border: 2px solid red;
+  border-radius: 4px;
+  line-height: 1;
+  padding: 2px 0 6px 6px;
+  background: #ffe6eb;
+}
+input.valid.success-alert {
+  border: 2px solid #4caf50;
+  color: green;
 }

@@ -1,14 +1,79 @@
 $(function () {
-  $("#addNew").click(addnew);
-  $("#reset").click(Reset);
-  $(".btn-secondary").click(Reset);
   locStorage();
   console.log(localStorage.length);
 });
+
 let index = localStorage.length;
 var id = index;
 
+function onChangeValidation(){
+  $.validator.addMethod("name",function(value,element){
+    debugger;
+    return value.match(/^[A-Za-z][A-Za-z,.'-]+ +[A-Za-z][A-Za-z,.'-]+$/)
+  });
+  $.validator.addMethod("cnic",function(value,element){
+    return value.match(/^\(?([0-9]{5})\)?[-. ]?([0-9]{7})[-. ]?([0-9]{1})$/)
+  });
+
+  $.validator.addMethod("num",function(value,element){
+    return value.match(/^\d{12}$/)
+  });
+
+  
+
+      $("#basic-form").validate({
+        errorClass: "error fail-alert",
+        validClass: "valid success-alert",
+
+        rules: {
+          name : {
+            required: true,
+            name: true
+          },
+          // age: {
+          //   required: true,
+          //   number: true,
+          //   min: 1,
+          //   max: 100
+          // },
+          // email: {
+          //   required: true,
+          //   email: true
+          // },
+          num:{
+            required: true,
+            num: true
+          },
+          // address: {
+          //   required: true
+          // },
+          cnic: {
+            required: true,
+            cnic: true
+          }
+        },
+        ///
+        messages : {
+          name: {
+          name: 'Name should only be chars or -',
+          required: 'Enter name'
+          },
+          // age:{},
+          // email:{},
+          cnic:{
+            cnic: 'Should be 13 numbers',
+            required: 'Enter cnic'
+          },
+          num:{
+            num: 'not matched c',
+            required: 'Enter number'
+          }
+        }
+      });
+}
+
 function addnew() {
+  
   var name = $("#name").val();
   var radioValue = $("input[name='gender']:checked").val();
   var age = $("#age").val();
@@ -21,19 +86,17 @@ function addnew() {
   if (!check()) {
     $("#addNew").removeAttr("data-dismiss", "modal");
     return;
-  } else {
+  } 
+  else {
     $("#addNew").attr("data-dismiss", "modal");
   }
 
   Reset();
 
   //locStorage
-    // for (let x = 0; x < localStorage.length; x++) //to add new records at the place of deleted records
     {
       let arr = [];
-      // console.log("Found " + arr[index]);
-
-      // if (!arr[index]) {
+ 
         arr[index] = {
           id: index,
           name: name,
@@ -45,14 +108,8 @@ function addnew() {
           email: email,
           cnic: cnic,
         };
-        
 
         localStorage.setItem("arr" + [index] + "", JSON.stringify(arr[index]));
-        console.log(arr[0]);
-      // } 
-      // else {
-      //   console.log("not found " + index + " " + arr[index]);
-      // }
     
     }
 
@@ -112,7 +169,6 @@ function locStorage() {
         appenD(id, name, radioValue, age, city, num, address, email, cnic);
       });
     } else {
-      // console.log("not found" + retrievedObject[i]);
       continue;
     }
   }
@@ -274,6 +330,22 @@ function onSave(Id) {
 
     id.children(".cnic").html("");
     id.children(".cnic").append(cnic);
+
+    let arr = [];
+   
+    arr[Id] = {
+      id: Id,
+      name: name,
+      radioValue: gender,
+      age: age,
+      city: city,
+      num: num,
+      address: address,
+      email: email,
+      cnic: cnic,
+    };  
+
+    localStorage.setItem("arr" + [Id] + "", JSON.stringify(arr[Id]));
 
     $(".alert-primary").show();
     $(".alert-primary").delay(1500).fadeOut();
@@ -449,7 +521,7 @@ function check() {
   //92xxxxxxxxxx
   {
     var num = $("#num").val();
-    var phoneno = /^\d{2}$/;
+    var phoneno = /^\d{12}$/;
     var first_three = num.slice(0, 2);
 
     if (first_three == 92 && num.match(phoneno)) {
@@ -520,7 +592,7 @@ function Reset() {
   $("#radio").children("input").prop("checked", false);
   $("#age").val("");
   $("#city-names").val("");
-  $("#num").val("");
+  $("#num").val("92");
   $("#email").val("");
   $("#cnic").val("");
   $("#address").val("");
